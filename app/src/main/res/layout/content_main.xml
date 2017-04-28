@@ -42,16 +42,20 @@
         android:layout_weight="1">
 
 
+
         <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
                 android:orientation="vertical"
-                android:background="@drawable/jardim">
+                android:background="@drawable/jardim"
+                android:paddingBottom="10dp"
+                android:paddingTop="10dp">
 
                 <Space
                     android:layout_weight="1"
@@ -59,196 +63,87 @@
                     android:layout_width="wrap_content"/>
 
                 <Button
-                    android:id="@+id/btna3"
+                    android:id="@+id/jardim"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_gravity="center"
                     android:background="@android:color/darker_gray"
                     android:backgroundTint="@android:color/transparent"
                     android:elevation="0dp"
-                    android:onClick="botao1"
                     android:text="Jardim"
                     android:textAppearance="@style/TextAppearance.AppCompat.Caption"
                     android:textColor="@android:color/background_light"
                     android:textSize="30sp"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    android:onClick="callGardenActivity"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Jardim"
+                    android:textColor="@android:color/background_light"
+                    />
 
             </LinearLayout>
 
-            <Space
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:layout_width="wrap_content"/>
-
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="texto1"
-                android:id="@+id/btn3"
-                android:onClick="botao1"
-                android:textSize="10dp" />
-
-            <SeekBar
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="200dp"
+                android:orientation="vertical"
+                android:background="@drawable/qaurto"
+                android:paddingBottom="10dp"
+                android:paddingTop="10dp">
 
+                <Space
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"/>
 
-            <Space
-                android:layout_weight="2"
-                android:layout_height="wrap_content"
-                android:layout_width="wrap_content"/>
+                <Button
+                    android:id="@+id/quarto"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:background="@android:color/darker_gray"
+                    android:backgroundTint="@android:color/transparent"
+                    android:elevation="0dp"
+                    android:text="Quarto"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Caption"
+                    android:textColor="@android:color/background_light"
+                    android:textSize="30sp"
+                    android:textStyle="bold"
+                    android:onClick="callBedRoomActivity"/>
 
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="texto1"
-                android:id="@+id/btn2"
-                android:onClick="botao1"
-                android:textSize="10dp" />
+            </LinearLayout>
 
-            <Space
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:layout_width="wrap_content"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:orientation="vertical"
+                android:background="@drawable/sala"
+                android:paddingBottom="10dp"
+                android:paddingTop="10dp">
 
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="texto1"
-                android:id="@+id/btn"
-                android:onClick="botao1"
-                android:textSize="10dp"
-                android:layout_gravity="center"/>
+                <Space
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"/>
 
-            <Space
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:layout_width="wrap_content"/>
+                <Button
+                    android:id="@+id/sala"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:background="@android:color/darker_gray"
+                    android:backgroundTint="@android:color/transparent"
+                    android:elevation="0dp"
+                    android:text="Sala"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Caption"
+                    android:textColor="@android:color/background_light"
+                    android:textSize="30sp"
+                    android:textStyle="bold"
+                    android:onClick="callRoomActivity"/>
 
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="texto1"
-                android:id="@+id/btn4"
-                android:onClick="botao1"
-                android:textSize="10dp" />
-
-            <Space
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:layout_width="wrap_content"/>
-
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="texto1"
-                android:id="@+id/btn5"
-                android:onClick="botao1"
-                android:textSize="10dp" />
-
-            <Space
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:layout_width="wrap_content"/>
-
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="texto1"
-                android:id="@+id/btn6"
-                android:onClick="botao1"
-                android:textSize="10dp" />
-
-            <Space
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:layout_width="wrap_content"/>
-
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="texto1"
-                android:id="@+id/btn7"
-                android:onClick="botao1"
-                android:textSize="10dp" />
-
-            <Space
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:layout_width="wrap_content"/>
-
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="texto1"
-                android:id="@+id/btn8"
-                android:onClick="botao1"
-                android:textSize="10dp" />
-
-            <Space
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:layout_width="wrap_content"/>
-
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="texto1"
-                android:id="@+id/btn9"
-                android:onClick="botao1"
-                android:textSize="10dp" />
-
-            <Space
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:layout_width="wrap_content"/>
-
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="texto1"
-                android:id="@+id/btn10"
-                android:onClick="botao1"
-                android:textSize="10dp" />
-
-            <Space
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:layout_width="wrap_content"/>
-
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="texto1"
-                android:id="@+id/btn11"
-                android:onClick="botao1"
-                android:textSize="10dp" />
-
-            <Space
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:layout_width="wrap_content"/>
-
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="texto1"
-                android:id="@+id/btn1"
-                android:onClick="botao12"
-                android:textSize="10dp" />
-
-            <Space
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:layout_width="wrap_content"/>
-
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="texto1"
-                android:id="@+id/btn13"
-                android:onClick="botao1"
-                android:textSize="10dp" />
+            </LinearLayout>
 
         </LinearLayout>
         
