@@ -7,6 +7,17 @@ import android.widget.Button;
 
 public class GardenActivity extends AppCompatActivity {
 
+
+    Boolean setor1 = false;
+
+    public Boolean getSetor1() {
+        return setor1;
+    }
+
+    public void setSetor1(Boolean setor1) {
+        this.setor1 = setor1;
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -21,6 +32,13 @@ public class GardenActivity extends AppCompatActivity {
     }
 
     public void setBgButton(Button botao) {
-        botao.setBackgroundResource(R.drawable.light_on);
+        if (!setor1) {
+            botao.setBackgroundResource(R.drawable.light_on);
+            setSetor1(true);
+        } else {
+            botao.setBackgroundResource(R.drawable.light_off);
+            setSetor1(false);
+        }
+
     }
 }
