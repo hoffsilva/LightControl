@@ -37,7 +37,8 @@ public class MainActivity extends AppCompatActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        if (id == R.id.action_status) {
+            callStatusActivity();
             return true;
         }
 
@@ -56,6 +57,11 @@ public class MainActivity extends AppCompatActivity {
 
     public void callRoomActivity(View view) {
         Intent intent = new Intent(MainActivity.this, RoomActivity.class);
+        startActivity(intent);
+    }
+
+    public void callStatusActivity() {
+        Intent intent = new Intent(MainActivity.this, StatusActivity.class);
         startActivity(intent);
     }
 

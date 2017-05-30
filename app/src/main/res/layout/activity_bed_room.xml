@@ -308,7 +308,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:textSize="20dp"
+                    android:textSize="0dp"
                     android:text="Setores"
                     android:textColor="@android:color/darker_gray"
                     android:gravity="center"
@@ -512,14 +512,15 @@
                             android:layout_centerHorizontal="true" />
                     </LinearLayout>
 
-                    <RelativeLayout
+                    <LinearLayout
                         android:layout_width="80dp"
                         android:layout_height="100dp"
                         android:padding="3dp"
                         android:layout_column="3"
                         android:layout_row="1"
                         android:layout_gravity="center"
-                        android:gravity="center">
+                        android:gravity="center"
+                        android:orientation="vertical">
 
                         <Button
                             android:id="@+id/setor5"
@@ -531,22 +532,29 @@
                             android:textAppearance="@style/TextAppearance.AppCompat.Caption"
                             android:textSize="16sp"
                             android:textStyle="bold" />
+
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Setor 5"
+                            android:layout_alignBottom="@+id/setor3"
+                            android:layout_centerHorizontal="true"
                             android:layout_gravity="center"
-                            android:textColor="@color/colorPrimary"/>
-                    </RelativeLayout>
+                            android:gravity="end"
+                            android:text="Setor 5"
+                            android:textAlignment="center"
+                            android:textColor="@color/colorPrimary" />
+                    </LinearLayout>
 
-                    <RelativeLayout
+                    <LinearLayout
                         android:layout_width="80dp"
                         android:layout_height="100dp"
                         android:padding="3dp"
                         android:layout_column="4"
                         android:layout_row="1"
                         android:layout_gravity="center"
-                        android:gravity="center">
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:paddingBottom="50dp">
 
                         <Button
                             android:id="@+id/setor6"
@@ -558,14 +566,18 @@
                             android:textAppearance="@style/TextAppearance.AppCompat.Caption"
                             android:textSize="16sp"
                             android:textStyle="bold" />
+
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_alignBottom="@+id/setor3"
+                            android:layout_centerHorizontal="true"
+                            android:layout_gravity="center"
+                            android:gravity="end"
                             android:text="Setor 6"
-                            android:layout_gravity="bottom"
-                            android:gravity="bottom"
-                            android:textColor="@color/colorPrimary"/>
-                    </RelativeLayout>
+                            android:textAlignment="center"
+                            android:textColor="@color/colorPrimary" />
+                    </LinearLayout>
 
 
                 </GridLayout>

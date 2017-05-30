@@ -3,8 +3,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.example.hoffsilva.lightcontrol.MainActivity">
     <item
-        android:id="@+id/action_settings"
+        android:id="@+id/action_status"
         android:orderInCategory="100"
-        android:title="@string/action_settings"
+        android:title="@string/action_status"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/action_error_log"
+        android:orderInCategory="100"
+        android:title="@string/action_error_log"
         app:showAsAction="never" />
 </menu>
