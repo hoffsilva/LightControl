@@ -28,6 +28,10 @@
         <activity
             android:name=".StatusActivity"
             android:label="@string/title_activity_status"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".LogActivity"
+            android:label="@string/title_activity_log"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
