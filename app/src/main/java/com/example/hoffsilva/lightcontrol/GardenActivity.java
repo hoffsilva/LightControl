@@ -6,12 +6,14 @@ import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Handler;
+import android.os.Looper;
 import android.os.StrictMode;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.SeekBar;
 import android.widget.Switch;
 import android.widget.Toast;
@@ -24,7 +26,7 @@ import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
 
-public class GardenActivity extends AppCompatActivity {
+public class GardenActivity extends AppCompatActivity implements CompoundButton.OnCheckedChangeListener {
 
 
     Boolean setor1isOn = false;
@@ -35,6 +37,7 @@ public class GardenActivity extends AppCompatActivity {
     byte[] send_data = new byte[50];
     byte[] receiveData = new byte[50];
     String modifiedSentence;
+
 
 
 
@@ -68,7 +71,12 @@ AP02C9 -> CONFIGURA CENA 9
     * CPO2S1 CPO4S1 CPO2S2 CPO4S2 CPO2S3 CPO4S3 CPO2SA
     * */
 
-    ArrayList<Button> buttons = new ArrayList<>();
+    ArrayList<Button> arrayOfSector = new ArrayList<>();
+    ArrayList<Button> arrayOfScene = new ArrayList<>();
+    Timer timer = new Timer();
+
+
+
 
     String setor1txt = "CP04S1";
     String setor2txt = "CP04S2";
@@ -81,6 +89,8 @@ AP02C9 -> CONFIGURA CENA 9
     String setorAlltxt = "CP04S0";
 
 
+
+
     public Boolean getSetor1() {
         return setor1isOn;
     }
@@ -89,22 +99,18 @@ AP02C9 -> CONFIGURA CENA 9
         this.setor1isOn = setor1isOn;
     }
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_garden);
-
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
 
-
-
-        final Handler handler = new Handler();
-
-
-//Lista de botoes das cenas.
+        //Lista de botoes das cenas.
         //Botao 1
-        final Button cena1 = (Button) findViewById(R.id.cena1);
+        Button cena1 = (Button) findViewById(R.id.cena1);
         //buttons.add(setor1);
         //botao 2
         final Button cena2 = (Button) findViewById(R.id.cena2);
@@ -132,33 +138,75 @@ AP02C9 -> CONFIGURA CENA 9
         //buttons.add(setor7);
 
         //Seekbar
-        final Switch seekBar = (Switch) findViewById(R.id.switch_config);
+        final Switch switchKey = (Switch) findViewById(R.id.switch_config);
 
 
+
+
+        //Lista de botoes referentes aos setores.
+        //Botao 1
+        final Button setor1 = (Button) findViewById(R.id.setor1);
+
+        //botao 2
+        final Button setor2 = (Button) findViewById(R.id.setor2);
+
+        //botao 3
+        final Button setor3 = (Button) findViewById(R.id.setor3);
+
+        //botao 4
+        final Button setor4 = (Button) findViewById(R.id.setor4);
+
+        //botao 5
+        final Button setor5 = (Button) findViewById(R.id.setor5);
+
+        //botao 6
+        final Button setor6 = (Button) findViewById(R.id.setor6);
+
+        //botao 7
+        final Button setor7 = (Button) findViewById(R.id.setor7);
+
+
+
+//Lista de botoes das cenas.
+        //Cena 1
+        arrayOfScene.add(cena1);
+        //botao 2
+        arrayOfScene.add(cena2);
+        //botao 3
+        arrayOfScene.add(cena3);
+        //botao 4
+        arrayOfScene.add(cena4);
+        //botao 5
+        arrayOfScene.add(cena5);
+        //botao 6
+        arrayOfScene.add(cena6);
+        //botao 7
+        arrayOfScene.add(cena7);
+        //botao 8
+        arrayOfScene.add(cena8);
+        //botao 9
+        arrayOfScene.add(cena9);
+
+        if (switchKey != null){
+            switchKey.setOnCheckedChangeListener(this);
+        }
 
 
 //Lista de botoes referentes aos setores.
         //Botao 1
-        final Button setor1 = (Button) findViewById(R.id.setor1);
-        buttons.add(setor1);
+        arrayOfSector.add(setor1);
         //botao 2
-        final Button setor2 = (Button) findViewById(R.id.setor2);
-        buttons.add(setor2);
+        arrayOfSector.add(setor2);
         //botao 3
-        final Button setor3 = (Button) findViewById(R.id.setor3);
-        buttons.add(setor3);
+        arrayOfSector.add(setor3);
         //botao 4
-        final Button setor4 = (Button) findViewById(R.id.setor4);
-        buttons.add(setor4);
+        arrayOfSector.add(setor4);
         //botao 5
-        final Button setor5 = (Button) findViewById(R.id.setor5);
-        buttons.add(setor5);
+        arrayOfSector.add(setor5);
         //botao 6
-        final Button setor6 = (Button) findViewById(R.id.setor6);
-        buttons.add(setor6);
+        arrayOfSector.add(setor6);
         //botao 7
-        final Button setor7 = (Button) findViewById(R.id.setor7);
-        buttons.add(setor7);
+        arrayOfSector.add(setor7);
 
         setor1.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -302,7 +350,7 @@ AP02C9 -> CONFIGURA CENA 9
 
         //botao 8
         final Button setor8 = (Button) findViewById(R.id.setor8);
-        buttons.add(setor8);
+
         setor8.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 String modSentence = "";
@@ -334,7 +382,7 @@ AP02C9 -> CONFIGURA CENA 9
                     } else {
                         char[] retorno = modSentence.toCharArray();
                         for (int i = 2; i < 10; i++ ) {
-                            setBgButton(buttons.get(i - 2), retorno[i]);
+                            setBgButton(arrayOfSector.get(i - 2), retorno[i]);
                         }
 
                     }
@@ -345,42 +393,30 @@ AP02C9 -> CONFIGURA CENA 9
             }
         });
 
-
-        handler.post(new Runnable() {
+        timer.schedule(new TimerTask() {
             @Override
             public void run() {
-                //checking();
+                checking();
             }
-        });
-//        this.runOnUiThread(new Runnable() {
-//            @Override
-//            public void run() {
-//                checking();
-//            }
-//        });
-
-
-
-
+        }, 0 ,5000);
 
 
 
     }
 
+    @Override
+    protected void onStop() {
+        super.onStop();
+        timer.cancel();
+    }
+
     public void checking(){
-        final TimerTask tt = new TimerTask() {
+        this.runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                createAlert("sasas", "asasasa");
+                createAlert("aasas", "asasas");
             }
-        };
-
-        new Thread(new Runnable() {
-            public void run() {
-                Timer timer = new Timer();
-                timer.scheduleAtFixedRate(tt, 1000, 5000);
-            }
-        }).start();
+        });
     }
 
     public void createAlert(String message, String title){
@@ -435,5 +471,16 @@ AP02C9 -> CONFIGURA CENA 9
         return  modifiedSentence;
         // }
 
+    }
+
+    @Override
+    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+        Toast.makeText(this, "Modo " + (isChecked ? "Configuração ativado." : "Comando ativado."),
+                Toast.LENGTH_SHORT).show();
+        if(isChecked) {
+            //do stuff when Switch is ON
+        } else {
+            //do stuff when Switch if OFF
+        }
     }
 }
