@@ -352,7 +352,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="80dp"
                                 android:layout_gravity="center"
-                                android:background="@drawable/light_off"
+                                android:background="@drawable/door_closed"
                                 android:elevation="0dp"
                                 android:textAppearance="@style/TextAppearance.AppCompat.Caption"
                                 android:textSize="16sp"
@@ -363,7 +363,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
                                 android:gravity="end"
-                                android:text="Setor 1"
+                                android:text="Pedestre"
                                 android:textAlignment="center"
                                 android:textColor="@color/colorPrimary"
                                 android:layout_alignBottom="@+id/setor3"
@@ -385,7 +385,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="80dp"
                                 android:layout_gravity="center"
-                                android:background="@drawable/light_off"
+                                android:background="@drawable/garage_closed"
                                 android:elevation="0dp"
                                 android:textAppearance="@style/TextAppearance.AppCompat.Caption"
                                 android:textSize="16sp"
@@ -418,7 +418,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="80dp"
                                 android:layout_gravity="center"
-                                android:background="@drawable/light_off"
+                                android:background="@drawable/pump"
                                 android:elevation="0dp"
                                 android:textAppearance="@style/TextAppearance.AppCompat.Caption"
                                 android:textSize="16sp"
@@ -431,7 +431,7 @@
                                 android:layout_centerHorizontal="true"
                                 android:layout_gravity="center"
                                 android:gravity="end"
-                                android:text="Setor 3"
+                                android:text="Garagem"
                                 android:textAlignment="center"
                                 android:textColor="@color/colorPrimary" />
                         </LinearLayout>
@@ -465,7 +465,7 @@
                                 android:layout_centerHorizontal="true"
                                 android:layout_gravity="center"
                                 android:gravity="end"
-                                android:text="Setor 4"
+                                android:text="Hidro"
                                 android:textAlignment="center"
                                 android:textColor="@color/colorPrimary" />
                         </LinearLayout>

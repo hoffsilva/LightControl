@@ -40,20 +40,29 @@ public class GardenActivity extends AppCompatActivity implements CompoundButton.
 
 
 
-
+    String scene1 = "CP02C2";
+    String scene2 = "CP02C2";
+    String scene3 = "CP02C3";
+    String scene4 = "CP02C4";
+    String scene5 = "CP02C5";
+    String scene6 = "CP02C6";
+    String scene7 = "CP02C7";
+    String scene8 = "CP02C8";
+    String scene9 = "CP02C9";
     /*
     *
     *
     * OBS:COM O CHECK DESMARCADO(PADRAO)
 CP02C1 -> ACIONA CENA 1
-CP02C2 -> ACIONA CENA 2
-CP02C3 -> ACIONA CENA 3
-CP02C4 -> ACIONA CENA 4
-CP02C5 -> ACIONA CENA 5
-CP02C6 -> ACIONA CENA 6
-CP02C7 -> ACIONA CENA 7
-CP02C8 -> ACIONA CENA 8
-CP02C9 -> ACIONA CENA 9
+
+ -> ACIONA CENA 2
+ -> ACIONA CENA 3
+ -> ACIONA CENA 4
+ -> ACIONA CENA 5
+ -> ACIONA CENA 6
+ -> ACIONA CENA 7
+ -> ACIONA CENA 8
+ -> ACIONA CENA 9
 
 Obs: COM O CHECK MARCADO
 AP02C1 -> CONFIGURA CENA 1
@@ -414,7 +423,7 @@ AP02C9 -> CONFIGURA CENA 9
         this.runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                createAlert("aasas", "asasas");
+                //createAlert("aasas", "asasas");
             }
         });
     }
@@ -475,12 +484,30 @@ AP02C9 -> CONFIGURA CENA 9
 
     @Override
     public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-        Toast.makeText(this, "Modo " + (isChecked ? "Configuração ativado." : "Comando ativado."),
+        Toast.makeText(this, "Modo " + (isChecked ? "Aciona ativado." : "Configura ativado."),
                 Toast.LENGTH_SHORT).show();
         if(isChecked) {
-            //do stuff when Switch is ON
+            scene1 = "AP02C1";
+            scene2 = "AP02C2";
+            scene3 = "AP02C3";
+            scene4 = "AP02C4";
+            scene5 = "AP02C5";
+            scene6 = "AP02C6";
+            scene7 = "AP02C7";
+            scene8 = "AP02C8";
+            scene9 = "AP02C9";
+            createAlert("asasas", "asasasas");
         } else {
-            //do stuff when Switch if OFF
+            scene1 = "CP02C2";
+            scene2 = "CP02C2";
+            scene3 = "CP02C3";
+            scene4 = "CP02C4";
+            scene5 = "CP02C5";
+            scene6 = "CP02C6";
+            scene7 = "CP02C7";
+            scene8 = "CP02C8";
+            scene9 = "CP02C9";
+            createAlert("ghghgh", "hjghjgjhj");
         }
     }
 }
