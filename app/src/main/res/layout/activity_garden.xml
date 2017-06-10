@@ -158,10 +158,13 @@
                             android:id="@+id/cena5"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_alignParentLeft="true"
+                            android:layout_alignParentStart="true"
+                            android:layout_alignParentTop="true"
                             android:layout_gravity="center"
                             android:background="@android:color/holo_green_dark"
                             android:elevation="0dp"
-                            android:text="CD"
+                            android:text="C5"
                             android:textAppearance="@style/TextAppearance.AppCompat.Caption"
                             android:textColor="@android:color/background_light"
                             android:textSize="16sp"
@@ -182,7 +185,7 @@
                             android:layout_gravity="center"
                             android:background="@android:color/holo_green_dark"
                             android:elevation="0dp"
-                            android:text="C5"
+                            android:text="C6"
                             android:textAppearance="@style/TextAppearance.AppCompat.Caption"
                             android:textColor="@android:color/background_light"
                             android:textSize="16sp"
@@ -204,7 +207,7 @@
                             android:layout_gravity="center"
                             android:background="@android:color/holo_green_dark"
                             android:elevation="0dp"
-                            android:text="C6"
+                            android:text="C7"
                             android:textAppearance="@style/TextAppearance.AppCompat.Caption"
                             android:textColor="@android:color/background_light"
                             android:textSize="16sp"
@@ -228,7 +231,7 @@
                             android:layout_gravity="center"
                             android:background="@android:color/holo_green_dark"
                             android:elevation="0dp"
-                            android:text="C7"
+                            android:text="C8"
                             android:textAppearance="@style/TextAppearance.AppCompat.Caption"
                             android:textColor="@android:color/background_light"
                             android:textSize="16sp"
@@ -249,7 +252,7 @@
                             android:layout_gravity="center"
                             android:background="@android:color/holo_green_dark"
                             android:elevation="0dp"
-                            android:text="C8"
+                            android:text="C9"
                             android:textAppearance="@style/TextAppearance.AppCompat.Caption"
                             android:textColor="@android:color/background_light"
                             android:textSize="16sp"
@@ -338,18 +341,18 @@
 
 
                         <LinearLayout
-                            android:layout_width="80dp"
-                            android:layout_height="100dp"
-                            android:padding="3dp"
+                            android:layout_width="90dp"
+                            android:layout_height="110dp"
                             android:layout_column="1"
-                            android:layout_row="1"
                             android:layout_gravity="center"
+                            android:layout_row="1"
                             android:gravity="center"
-                            android:orientation="vertical">
+                            android:orientation="vertical"
+                            android:padding="3dp">
 
                             <Button
                                 android:id="@+id/setor1"
-                                android:layout_width="wrap_content"
+                                android:layout_width="80dp"
                                 android:layout_height="80dp"
                                 android:layout_gravity="center"
                                 android:background="@drawable/door_closed"
@@ -361,64 +364,31 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:layout_alignBottom="@+id/setor3"
+                                android:layout_centerHorizontal="true"
                                 android:layout_gravity="center"
                                 android:gravity="end"
                                 android:text="Pedestre"
                                 android:textAlignment="center"
-                                android:textColor="@color/colorPrimary"
-                                android:layout_alignBottom="@+id/setor3"
-                                android:layout_centerHorizontal="true" />
+                                android:textColor="@color/colorPrimary" />
                         </LinearLayout>
 
                         <LinearLayout
                             android:layout_width="80dp"
-                            android:layout_height="100dp"
-                            android:padding="3dp"
+                            android:layout_height="110dp"
                             android:layout_column="2"
-                            android:layout_row="1"
                             android:layout_gravity="center"
+                            android:layout_row="1"
                             android:gravity="center"
-                            android:orientation="vertical">
+                            android:orientation="vertical"
+                            android:padding="3dp">
 
                             <Button
                                 android:id="@+id/setor2"
-                                android:layout_width="wrap_content"
+                                android:layout_width="80dp"
                                 android:layout_height="80dp"
                                 android:layout_gravity="center"
                                 android:background="@drawable/garage_closed"
-                                android:elevation="0dp"
-                                android:textAppearance="@style/TextAppearance.AppCompat.Caption"
-                                android:textSize="16sp"
-                                android:textStyle="bold" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center"
-                                android:gravity="end"
-                                android:text="Setor 3"
-                                android:textAlignment="center"
-                                android:textColor="@color/colorPrimary"
-                                android:layout_alignBottom="@+id/setor3"
-                                android:layout_centerHorizontal="true" />
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_width="80dp"
-                            android:layout_height="100dp"
-                            android:padding="3dp"
-                            android:layout_column="3"
-                            android:layout_row="1"
-                            android:layout_gravity="center"
-                            android:gravity="center"
-                            android:orientation="vertical">
-
-                            <Button
-                                android:id="@+id/setor3"
-                                android:layout_width="wrap_content"
-                                android:layout_height="80dp"
-                                android:layout_gravity="center"
-                                android:background="@drawable/pump"
                                 android:elevation="0dp"
                                 android:textAppearance="@style/TextAppearance.AppCompat.Caption"
                                 android:textSize="16sp"
@@ -437,22 +407,21 @@
                         </LinearLayout>
 
                         <LinearLayout
-                            android:layout_width="80dp"
-                            android:layout_height="100dp"
-                            android:padding="3dp"
-                            android:layout_column="4"
-                            android:layout_row="1"
+                            android:layout_width="100dp"
+                            android:layout_height="110dp"
+                            android:layout_column="3"
                             android:layout_gravity="center"
+                            android:layout_row="1"
                             android:gravity="center"
                             android:orientation="vertical"
-                            android:paddingBottom="50dp">
+                            android:padding="3dp">
 
                             <Button
-                                android:id="@+id/setor4"
-                                android:layout_width="wrap_content"
+                                android:id="@+id/setor3"
+                                android:layout_width="80dp"
                                 android:layout_height="80dp"
                                 android:layout_gravity="center"
-                                android:background="@drawable/light_off"
+                                android:background="@drawable/pump_off"
                                 android:elevation="0dp"
                                 android:textAppearance="@style/TextAppearance.AppCompat.Caption"
                                 android:textSize="16sp"
@@ -470,6 +439,40 @@
                                 android:textColor="@color/colorPrimary" />
                         </LinearLayout>
 
+                        <LinearLayout
+                            android:layout_width="80dp"
+                            android:layout_height="110dp"
+                            android:layout_column="4"
+                            android:layout_gravity="center"
+                            android:layout_row="1"
+                            android:gravity="center"
+                            android:orientation="vertical"
+                            android:padding="3dp"
+                            android:paddingBottom="50dp">
+
+                            <Button
+                                android:id="@+id/setor4"
+                                android:layout_width="80dp"
+                                android:layout_height="80dp"
+                                android:layout_gravity="center"
+                                android:background="@drawable/light_off"
+                                android:elevation="0dp"
+                                android:textAppearance="@style/TextAppearance.AppCompat.Caption"
+                                android:textSize="16sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignBottom="@+id/setor3"
+                                android:layout_centerHorizontal="true"
+                                android:layout_gravity="center"
+                                android:gravity="end"
+                                android:text="Setor 4"
+                                android:textAlignment="center"
+                                android:textColor="@color/colorPrimary" />
+                        </LinearLayout>
+
 
                     </GridLayout>
 
@@ -482,17 +485,17 @@
 
                         <LinearLayout
                             android:layout_width="80dp"
-                            android:layout_height="100dp"
-                            android:padding="3dp"
+                            android:layout_height="110dp"
                             android:layout_column="1"
-                            android:layout_row="1"
                             android:layout_gravity="center"
+                            android:layout_row="1"
                             android:gravity="center"
-                            android:orientation="vertical">
+                            android:orientation="vertical"
+                            android:padding="3dp">
 
                             <Button
                                 android:id="@+id/setor5"
-                                android:layout_width="wrap_content"
+                                android:layout_width="80dp"
                                 android:layout_height="80dp"
                                 android:layout_gravity="center"
                                 android:background="@drawable/light_off"
@@ -504,28 +507,28 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:layout_alignBottom="@+id/setor3"
+                                android:layout_centerHorizontal="true"
                                 android:layout_gravity="center"
                                 android:gravity="end"
                                 android:text="Setor 5"
                                 android:textAlignment="center"
-                                android:textColor="@color/colorPrimary"
-                                android:layout_alignBottom="@+id/setor3"
-                                android:layout_centerHorizontal="true" />
+                                android:textColor="@color/colorPrimary" />
                         </LinearLayout>
 
                         <LinearLayout
                             android:layout_width="80dp"
-                            android:layout_height="100dp"
-                            android:padding="3dp"
+                            android:layout_height="110dp"
                             android:layout_column="2"
-                            android:layout_row="1"
                             android:layout_gravity="center"
+                            android:layout_row="1"
                             android:gravity="center"
-                            android:orientation="vertical">
+                            android:orientation="vertical"
+                            android:padding="3dp">
 
                             <Button
                                 android:id="@+id/setor6"
-                                android:layout_width="wrap_content"
+                                android:layout_width="80dp"
                                 android:layout_height="80dp"
                                 android:layout_gravity="center"
                                 android:background="@drawable/light_off"
@@ -537,28 +540,28 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:layout_alignBottom="@+id/setor3"
+                                android:layout_centerHorizontal="true"
                                 android:layout_gravity="center"
                                 android:gravity="end"
                                 android:text="Setor 6"
                                 android:textAlignment="center"
-                                android:textColor="@color/colorPrimary"
-                                android:layout_alignBottom="@+id/setor3"
-                                android:layout_centerHorizontal="true" />
+                                android:textColor="@color/colorPrimary" />
                         </LinearLayout>
 
                         <LinearLayout
                             android:layout_width="80dp"
-                            android:layout_height="100dp"
-                            android:padding="3dp"
+                            android:layout_height="110dp"
                             android:layout_column="3"
-                            android:layout_row="1"
                             android:layout_gravity="center"
+                            android:layout_row="1"
                             android:gravity="center"
-                            android:orientation="vertical">
+                            android:orientation="vertical"
+                            android:padding="3dp">
 
                             <Button
                                 android:id="@+id/setor7"
-                                android:layout_width="wrap_content"
+                                android:layout_width="80dp"
                                 android:layout_height="80dp"
                                 android:layout_gravity="center"
                                 android:background="@drawable/light_off"
@@ -581,18 +584,18 @@
 
                         <LinearLayout
                             android:layout_width="80dp"
-                            android:layout_height="100dp"
-                            android:padding="3dp"
+                            android:layout_height="110dp"
                             android:layout_column="4"
-                            android:layout_row="1"
                             android:layout_gravity="center"
+                            android:layout_row="1"
                             android:gravity="center"
                             android:orientation="vertical"
+                            android:padding="3dp"
                             android:paddingBottom="50dp">
 
                             <Button
                                 android:id="@+id/setor8"
-                                android:layout_width="wrap_content"
+                                android:layout_width="80dp"
                                 android:layout_height="80dp"
                                 android:layout_gravity="center"
                                 android:background="@drawable/light_off"

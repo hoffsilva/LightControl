@@ -8,13 +8,19 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CompoundButton;
+import android.widget.Switch;
+import android.widget.Toast;
 
 import java.io.IOException;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.InetAddress;
+import java.util.ArrayList;
+import java.util.Timer;
+import java.util.TimerTask;
 
-public class BedRoomActivity extends AppCompatActivity {
+public class BedRoomActivity extends AppCompatActivity implements CompoundButton.OnCheckedChangeListener {
 
     Boolean setor1isOn = false;
     private static final String host = null;
@@ -24,6 +30,18 @@ public class BedRoomActivity extends AppCompatActivity {
     byte[] send_data = new byte[50];
     byte[] receiveData = new byte[50];
     String modifiedSentence;
+
+
+    String scene1 = "CP02C1";
+    String scene2 = "CP02C2";
+    String scene3 = "CP02C3";
+    String scene4 = "CP02C4";
+    String scene5 = "CP02C5";
+    String scene6 = "CP02C6";
+    String scene7 = "CP02C7";
+    String scene8 = "CP02C8";
+    String scene9 = "CP02C9";
+    /*
     /*
     *
     ******************COMANDOS PARA PLACA DE 8 SETORES
@@ -60,6 +78,11 @@ AP02C8 -> CONFIGURA CENA 8
 AP02C9 -> CONFIGURA CENA 9
     */
 
+    ArrayList<Button> arrayOfSector = new ArrayList<>();
+    ArrayList<Button> arrayOfScene = new ArrayList<>();
+    Timer timer = new Timer();
+
+
     String setor1txt = "CP02S1";
     String setor2txt = "CP02S2";
     String setor3txt = "CP02S3";
@@ -80,45 +103,144 @@ AP02C9 -> CONFIGURA CENA 9
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bed_room);
-        //createButtons();
-
-    }
 
 
-
-    public void createButtons() {
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
 
+        //Lista de botoes das cenas.
+        //Botao 1
+        Button cena1 = (Button) findViewById(R.id.cena1);
+        //buttons.add(setor1);
+        //botao 2
+        final Button cena2 = (Button) findViewById(R.id.cena2);
+        //buttons.add(setor2);
+        //botao 3
+        final Button cena3 = (Button) findViewById(R.id.cena3);
+        //buttons.add(setor3);
+        //botao 4
+        final Button cena4 = (Button) findViewById(R.id.cena4);
+        //buttons.add(setor4);
+        //botao 5
+        final Button cena5 = (Button) findViewById(R.id.cena5);
+        //buttons.add(setor5);
+        //botao 6
+        final Button cena6 = (Button) findViewById(R.id.cena6);
+        //buttons.add(setor6);
+        //botao 7
+        final Button cena7 = (Button) findViewById(R.id.cena7);
+        //buttons.add(setor7);
+        //botao 8
+        final Button cena8 = (Button) findViewById(R.id.cena8);
+        //buttons.add(setor7);
+        //botao 9
+        final Button cena9 = (Button) findViewById(R.id.cena9);
+        //buttons.add(setor7);
+
+        //Seekbar
+        final Switch switchKey = (Switch) findViewById(R.id.switch_config);
+
+
+
+
+        //Lista de botoes referentes aos setores.
+        //Botao 1
         final Button setor1 = (Button) findViewById(R.id.setor1);
+
+        //botao 2
+        final Button setor2 = (Button) findViewById(R.id.setor2);
+
+        //botao 3
+        final Button setor3 = (Button) findViewById(R.id.setor3);
+
+        //botao 4
+        final Button setor4 = (Button) findViewById(R.id.setor4);
+
+        //botao 5
+        final Button setor5 = (Button) findViewById(R.id.setor5);
+
+        //botao 6
+        final Button setor6 = (Button) findViewById(R.id.setor6);
+
+        //botao 7
+        final Button setor7 = (Button) findViewById(R.id.setor7);
+
+
+
+//Lista de botoes das cenas.
+        //Cena 1
+        arrayOfScene.add(cena1);
+        //botao 2
+        arrayOfScene.add(cena2);
+        //botao 3
+        arrayOfScene.add(cena3);
+        //botao 4
+        arrayOfScene.add(cena4);
+        //botao 5
+        arrayOfScene.add(cena5);
+        //botao 6
+        arrayOfScene.add(cena6);
+        //botao 7
+        arrayOfScene.add(cena7);
+        //botao 8
+        arrayOfScene.add(cena8);
+        //botao 9
+        arrayOfScene.add(cena9);
+
+        if (switchKey != null){
+            switchKey.setOnCheckedChangeListener(this);
+        }
+
+
+//Lista de botoes referentes aos setores.
+        //Botao 1
+        arrayOfSector.add(setor1);
+        //botao 2
+        arrayOfSector.add(setor2);
+        //botao 3
+        arrayOfSector.add(setor3);
+        //botao 4
+        arrayOfSector.add(setor4);
+        //botao 5
+        arrayOfSector.add(setor5);
+        //botao 6
+        arrayOfSector.add(setor6);
+        //botao 7
+        arrayOfSector.add(setor7);
+
         setor1.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 String modSentence = "";
                 try {
                     //client("CP02S1");
                     modSentence = client(setor1txt);
-                    if (!modSentence.isEmpty()) {
-                        setBgButton(setor1);
+                    if (!modSentence.contains("St")) {
+                        createAlert(modSentence,"Alerta");
+                    } else {
+                        char[] retorno = modSentence.toCharArray();
+                        setBgButton(setor1, retorno[2]);
                     }
-                    createAlert(modSentence, "Alerta");
+
+
                 } catch (IOException e) {
-                    Log.e("Error", e.toString());
-                    e.printStackTrace();
+                    createAlert(e.toString(),"Alerta");
                 }
             }
         });
 
-        final Button setor2 = (Button) findViewById(R.id.setor2);
+
         setor2.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 String modSentence = "";
                 try {
                     //client("CP02S1");
                     modSentence = client(setor2txt);
-                    if (!modSentence.isEmpty()) {
-                        setBgButton(setor1);
+                    if (!modSentence.contains("St")) {
+                        createAlert(modSentence,"Alerta");
+                    } else {
+                        char[] retorno = modSentence.toCharArray();
+                        setBgButton(setor2, retorno[3]);
                     }
-                    createAlert(modSentence, "Alerta");
                 } catch (IOException e) {
                     Log.e("Error", e.toString());
                     e.printStackTrace();
@@ -126,17 +248,19 @@ AP02C9 -> CONFIGURA CENA 9
             }
         });
 
-        final Button setor3 = (Button) findViewById(R.id.setor3);
+
         setor3.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 String modSentence = "";
                 try {
                     //client("CP02S1");
                     modSentence = client(setor3txt);
-                    if (!modSentence.isEmpty()) {
-                        setBgButton(setor1);
+                    if (!modSentence.contains("St")) {
+                        createAlert(modSentence,"Alerta");
+                    } else {
+                        char[] retorno = modSentence.toCharArray();
+                        setBgButton(setor3, retorno[4]);
                     }
-                    createAlert(modSentence, "Alerta");
                 } catch (IOException e) {
                     Log.e("Error", e.toString());
                     e.printStackTrace();
@@ -144,17 +268,19 @@ AP02C9 -> CONFIGURA CENA 9
             }
         });
 
-        final Button setor4 = (Button) findViewById(R.id.setor4);
+
         setor4.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 String modSentence = "";
                 try {
                     //client("CP02S1");
                     modSentence = client(setor4txt);
-                    if (!modSentence.isEmpty()) {
-                        setBgButton(setor1);
+                    if (!modSentence.contains("St")) {
+                        createAlert(modSentence,"Alerta");
+                    } else {
+                        char[] retorno = modSentence.toCharArray();
+                        setBgButton(setor4, retorno[5]);
                     }
-                    createAlert(modSentence, "Alerta");
                 } catch (IOException e) {
                     Log.e("Error", e.toString());
                     e.printStackTrace();
@@ -162,17 +288,19 @@ AP02C9 -> CONFIGURA CENA 9
             }
         });
 
-        final Button setor5 = (Button) findViewById(R.id.setor5);
+
         setor5.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 String modSentence = "";
                 try {
                     //client("CP02S1");
                     modSentence = client(setor5txt);
-                    if (!modSentence.isEmpty()) {
-                        setBgButton(setor1);
+                    if (!modSentence.contains("St")) {
+                        createAlert(modSentence,"Alerta");
+                    } else {
+                        char[] retorno = modSentence.toCharArray();
+                        setBgButton(setor5, retorno[6]);
                     }
-                    createAlert(modSentence, "Alerta");
                 } catch (IOException e) {
                     Log.e("Error", e.toString());
                     e.printStackTrace();
@@ -180,17 +308,19 @@ AP02C9 -> CONFIGURA CENA 9
             }
         });
 
-        final Button setor6 = (Button) findViewById(R.id.setor6);
+
         setor6.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 String modSentence = "";
                 try {
                     //client("CP02S1");
                     modSentence = client(setor6txt);
-                    if (!modSentence.isEmpty()) {
-                        setBgButton(setor1);
+                    if (!modSentence.contains("St")) {
+                        createAlert(modSentence,"Alerta");
+                    } else {
+                        char[] retorno = modSentence.toCharArray();
+                        setBgButton(setor6, retorno[7]);
                     }
-                    createAlert(modSentence, "Alerta");
                 } catch (IOException e) {
                     Log.e("Error", e.toString());
                     e.printStackTrace();
@@ -198,21 +328,58 @@ AP02C9 -> CONFIGURA CENA 9
             }
         });
 
-        final Button setorAll = (Button) findViewById(R.id.setor7);
+        final Button setorAll = (Button) findViewById(R.id.all);
         setorAll.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 String modSentence = "";
                 try {
                     //client("CP02S1");
                     modSentence = client(setorAlltxt);
-                    if (!modSentence.isEmpty()) {
-                        setBgButton(setor1);
+                    if (!modSentence.contains("St")) {
+                        createAlert(modSentence,"Alerta");
+                    } else {
+                        char[] retorno = modSentence.toCharArray();
+                        for (int i = 2; i < 10; i++ ) {
+                            setBgButton(arrayOfSector.get(i - 2), retorno[i]);
+                        }
+
                     }
-                    createAlert(modSentence, "Alerta");
                 } catch (IOException e) {
                     Log.e("Error", e.toString());
                     e.printStackTrace();
                 }
+            }
+        });
+
+        timer.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                checking();
+            }
+        }, 0 ,5000);
+
+
+
+
+    }
+
+
+
+
+
+
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        timer.cancel();
+    }
+
+    public void checking(){
+        this.runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                //createAlert("aasas", "asasas");
             }
         });
     }
@@ -228,16 +395,25 @@ AP02C9 -> CONFIGURA CENA 9
                     }
                 });
         alertDialog.show();
+
     }
 
-    public void setBgButton(Button botao) {
+    public void setBgButton(Button botao, Character isOn) {
 
-        if (!setor1isOn) {
+        if (isOn.toString().equals("1")) {
             botao.setBackgroundResource(R.drawable.light_on);
-            setSetor1(true);
         } else {
             botao.setBackgroundResource(R.drawable.light_off);
-            setSetor1(false);
+        }
+
+    }
+
+    public void setBgButtonPump(Button botao, Character isOn) {
+
+        if (isOn.toString().equals("1")) {
+            botao.setBackgroundResource(R.drawable.pump_on);
+        } else {
+            botao.setBackgroundResource(R.drawable.pump_off);
         }
 
     }
@@ -270,6 +446,35 @@ AP02C9 -> CONFIGURA CENA 9
         return  modifiedSentence;
         // }
 
+    }
+
+    @Override
+    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+        Toast.makeText(this, "Modo " + (isChecked ? "Aciona ativado." : "Configura ativado."),
+                Toast.LENGTH_SHORT).show();
+        if(isChecked) {
+            scene1 = "AP02C1";
+            scene2 = "AP02C2";
+            scene3 = "AP02C3";
+            scene4 = "AP02C4";
+            scene5 = "AP02C5";
+            scene6 = "AP02C6";
+            scene7 = "AP02C7";
+            scene8 = "AP02C8";
+            scene9 = "AP02C9";
+            createAlert("asasas", "asasasas");
+        } else {
+            scene1 = "CP02C2";
+            scene2 = "CP02C2";
+            scene3 = "CP02C3";
+            scene4 = "CP02C4";
+            scene5 = "CP02C5";
+            scene6 = "CP02C6";
+            scene7 = "CP02C7";
+            scene8 = "CP02C8";
+            scene9 = "CP02C9";
+            createAlert("ghghgh", "hjghjgjhj");
+        }
     }
 
 

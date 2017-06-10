@@ -42,6 +42,12 @@ public class MainActivity extends AppCompatActivity {
             return true;
         }
 
+        if (id == R.id.action_error_log) {
+            callLogActivity();
+            return true;
+        }
+
+
         return super.onOptionsItemSelected(item);
     }
 
@@ -62,6 +68,11 @@ public class MainActivity extends AppCompatActivity {
 
     public void callStatusActivity() {
         Intent intent = new Intent(MainActivity.this, StatusActivity.class);
+        startActivity(intent);
+    }
+
+    public void callLogActivity() {
+        Intent intent = new Intent(MainActivity.this, LogActivity.class);
         startActivity(intent);
     }
 

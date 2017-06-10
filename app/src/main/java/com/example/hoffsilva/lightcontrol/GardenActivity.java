@@ -452,6 +452,16 @@ AP02C9 -> CONFIGURA CENA 9
 
     }
 
+    public void setBgButtonPump(Button botao, Character isOn) {
+
+        if (isOn.toString().equals("1")) {
+            botao.setBackgroundResource(R.drawable.pump_on);
+        } else {
+            botao.setBackgroundResource(R.drawable.pump_off);
+        }
+
+    }
+
     public String client(String setor) throws IOException {
 
 
