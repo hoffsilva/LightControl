@@ -637,9 +637,6 @@ public class GardenActivity extends AppCompatActivity implements CompoundButton.
                         }
 
                         setTitleOnMainButton(setorAll, retorno);
-
-
-
                     }
                 } catch (IOException e) {
                     Log.e("Error", e.toString());

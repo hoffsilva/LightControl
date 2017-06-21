@@ -9,7 +9,9 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CompoundButton;
+import android.widget.SeekBar;
 import android.widget.Switch;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.IOException;
@@ -32,6 +34,8 @@ public class BedRoomActivity extends AppCompatActivity implements CompoundButton
     String modifiedSentence;
 
 
+    //De acionamento
+
     String scene1 = "CP02C1";
     String scene2 = "CP02C2";
     String scene3 = "CP02C3";
@@ -41,42 +45,19 @@ public class BedRoomActivity extends AppCompatActivity implements CompoundButton
     String scene7 = "CP02C7";
     String scene8 = "CP02C8";
     String scene9 = "CP02C9";
-    /*
-    /*
-    *
-    ******************COMANDOS PARA PLACA DE 8 SETORES
-CP02S1 –> RELÉ OU LAMPADA 1
-CP02S2 –> RELÉ OU LAMPADA 2
-CP02S3 –> RELÉ OU LAMPADA 3
-CP02S4 –> RELÉ OU LAMPADA 4
-CP02S5 –> RELÉ OU LAMPADA 5
-CP02S6 –> RELÉ OU LAMPADA 6
-CP02S7 –> RELÉ OU LAMPADA 7
-CP02S8 –> RELÉ OU LAMPADA 8
-CP02S0 –> TODOS RELÉS OU LAMPADAS
 
-Obs:COM O CHECK DESMARCADO(PADRAO)
-CP02C1 -> ACIONA CENA 1
-CP02C2 -> ACIONA CENA 2
-CP02C3 -> ACIONA CENA 3
-CP02C4 -> ACIONA CENA 4
-CP02C5 -> ACIONA CENA 5
-CP02C6 -> ACIONA CENA 6
-CP02C7 -> ACIONA CENA 7
-CP02C8 -> ACIONA CENA 8
-CP02C9 -> ACIONA CENA 9
 
-Obs:COM O CHECK MARCADO
-AP02C1 -> CONFIGURA CENA 1
-AP02C2 -> CONFIGURA CENA 2
-AP02C3 -> CONFIGURA CENA 3
-AP02C4 -> CONFIGURA CENA 4
-AP02C5 -> CONFIGURA CENA 5
-AP02C6 -> CONFIGURA CENA 6
-AP02C7 -> CONFIGURA CENA 7
-AP02C8 -> CONFIGURA CENA 8
-AP02C9 -> CONFIGURA CENA 9
-    */
+    //De configuracao
+    String confScene1 = "AP02C1";
+    String confScene2 = "AP02C2";
+    String confScene3 = "AP02C3";
+    String confScene4 = "AP02C4";
+    String confScene5 = "AP02C5";
+    String confScene6 = "AP02C6";
+    String confScene7 = "AP02C7";
+    String confScene8 = "AP02C8";
+    String confScene9 = "AP02C9";
+
 
     ArrayList<Button> arrayOfSector = new ArrayList<>();
     ArrayList<Button> arrayOfScene = new ArrayList<>();
@@ -90,6 +71,8 @@ AP02C9 -> CONFIGURA CENA 9
     String setor5txt = "CP02S5";
     String setor6txt = "CP02S6";
     String setorAlltxt = "CP02S0";
+
+    Button all;
 
     public Boolean getSetor1() {
         return setor1isOn;
@@ -137,7 +120,7 @@ AP02C9 -> CONFIGURA CENA 9
         final Button cena9 = (Button) findViewById(R.id.cena9);
         //buttons.add(setor7);
 
-        //Seekbar
+        //Switch
         final Switch switchKey = (Switch) findViewById(R.id.switch_config);
 
 
@@ -147,8 +130,14 @@ AP02C9 -> CONFIGURA CENA 9
         //Botao 1
         final Button setor1 = (Button) findViewById(R.id.setor1);
 
+        //seek 1
+        final SeekBar seekSetor1 = (SeekBar) findViewById(R.id.seekSetor1);
+
         //botao 2
         final Button setor2 = (Button) findViewById(R.id.setor2);
+
+        //seek 1
+        final SeekBar seekSetor2 = (SeekBar) findViewById(R.id.seekSetor2);
 
         //botao 3
         final Button setor3 = (Button) findViewById(R.id.setor3);
@@ -207,6 +196,86 @@ AP02C9 -> CONFIGURA CENA 9
         arrayOfSector.add(setor6);
         //botao 7
         arrayOfSector.add(setor7);
+
+        final TextView textView2 = (TextView) findViewById(R.id.textView2);
+
+        seekSetor1.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener(){
+            int progresss = 0;
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                progresss = progress;
+
+                setor1.setAlpha((float) progress/100);
+                textView2.setText(String.valueOf(progresss));
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+                String modSentence = "";
+
+                int value = (progresss*255)/100;
+
+                try {
+                    //client("CP02S1");
+                    char dimmerValue = (char) value;
+
+                    modSentence = client("CP02D1"+dimmerValue);
+                    if (!modSentence.contains("St")) {
+                        createAlert(modSentence,"Alerta");
+                    } else {
+                        char[] retorno = modSentence.toCharArray();
+                        setBgButton(setor2, retorno[3]);
+                    }
+                } catch (IOException e) {
+                    Log.e("Error", e.toString());
+                    e.printStackTrace();
+                }
+
+            }
+        });
+
+        final TextView textView = (TextView) findViewById(R.id.textView);
+
+        seekSetor2.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener(){
+            int progresss = 0;
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                progresss = progress;
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+                String modSentence = "";
+                int value = (progresss*255)/100;
+                textView.setText(String.valueOf(value));
+                try {
+                    //client("CP02S1");
+                    char dimmerValue = (char) value;
+
+                    modSentence = client("CP02D2"+dimmerValue);
+                    if (!modSentence.contains("St")) {
+                        createAlert(modSentence,"Alerta");
+                    } else {
+                        char[] retorno = modSentence.toCharArray();
+                        setBgButton(setor2, retorno[3]);
+                    }
+                } catch (IOException e) {
+                    Log.e("Error", e.toString());
+                    e.printStackTrace();
+                }
+
+            }
+        });
 
         setor1.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -430,7 +499,7 @@ AP02C9 -> CONFIGURA CENA 9
 
         //System.out.println("Type Something (q or Q to quit): ");
 
-        DatagramPacket send_packet = new DatagramPacket(send_data,str.length(), IPAddress, 10000);
+        DatagramPacket send_packet = new DatagramPacket(send_data,setor.length(), IPAddress, 10000);
         client_socket.send(send_packet);
         //chandra
         DatagramPacket receivePacket = new DatagramPacket(receiveData, receiveData.length);
