@@ -39,41 +39,32 @@ public class GardenActivity extends AppCompatActivity implements CompoundButton.
     String modifiedSentence;
 
 
+    //De acionamento
 
-    String scene1 = "CP02C2";
-    String scene2 = "CP02C2";
-    String scene3 = "CP02C3";
-    String scene4 = "CP02C4";
-    String scene5 = "CP02C5";
-    String scene6 = "CP02C6";
-    String scene7 = "CP02C7";
-    String scene8 = "CP02C8";
-    String scene9 = "CP02C9";
+    String scene1 = "CP04C1";
+    String scene2 = "CP04C2";
+    String scene3 = "CP04C3";
+    String scene4 = "CP04C4";
+    String scene5 = "CP04C5";
+    String scene6 = "CP04C6";
+    String scene7 = "CP04C7";
+    String scene8 = "CP04C8";
+    String scene9 = "CP04C9";
+
+
+    //De configuracao
+    String confScene1 = "AP04C1";
+    String confScene2 = "AP04C2";
+    String confScene3 = "AP04C3";
+    String confScene4 = "AP04C4";
+    String confScene5 = "AP04C5";
+    String confScene6 = "AP04C6";
+    String confScene7 = "AP04C7";
+    String confScene8 = "AP04C8";
+    String confScene9 = "AP04C9";
+
     /*
     *
-    *
-    * OBS:COM O CHECK DESMARCADO(PADRAO)
-CP02C1 -> ACIONA CENA 1
-
- -> ACIONA CENA 2
- -> ACIONA CENA 3
- -> ACIONA CENA 4
- -> ACIONA CENA 5
- -> ACIONA CENA 6
- -> ACIONA CENA 7
- -> ACIONA CENA 8
- -> ACIONA CENA 9
-
-Obs: COM O CHECK MARCADO
-AP02C1 -> CONFIGURA CENA 1
-AP02C2 -> CONFIGURA CENA 2
-AP02C3 -> CONFIGURA CENA 3
-AP02C4 -> CONFIGURA CENA 4
-AP02C5 -> CONFIGURA CENA 5
-AP02C6 -> CONFIGURA CENA 6
-AP02C7 -> CONFIGURA CENA 7
-AP02C8 -> CONFIGURA CENA 8
-AP02C9 -> CONFIGURA CENA 9
     * */
     //Setores:
     /*
@@ -87,9 +78,9 @@ AP02C9 -> CONFIGURA CENA 9
 
 
 
-    String setor1txt = "CP04S1";
-    String setor2txt = "CP04S2";
-    String setor3txt = "CP04S3";
+    String setor1txt = "CP04S1"; //pedestre
+    String setor2txt = "CP04S2"; //garagem
+    String setor3txt = "CP04S3"; //Bomba
     String setor4txt = "CP04S4";
     String setor5txt = "CP04S5";
     String setor6txt = "CP04S6";
@@ -99,6 +90,7 @@ AP02C9 -> CONFIGURA CENA 9
 
 
 
+    Button all;
 
     public Boolean getSetor1() {
         return setor1isOn;
@@ -174,6 +166,12 @@ AP02C9 -> CONFIGURA CENA 9
         //botao 7
         final Button setor7 = (Button) findViewById(R.id.setor7);
 
+        //botao 7
+        final Button setor8 = (Button) findViewById(R.id.setor8);
+
+        final Button setorAll = (Button) findViewById(R.id.all);
+
+        all = setorAll;
 
 
 //Lista de botoes das cenas.
@@ -200,34 +198,275 @@ AP02C9 -> CONFIGURA CENA 9
             switchKey.setOnCheckedChangeListener(this);
         }
 
+        cena1.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                String modSentence = "";
+                try {
+                    //Pedestre
+                    if (switchKey.isChecked()) {
+                        modSentence = client(confScene1);
+                        switchKey.setChecked(false);
+                    } else {
+                        modSentence = client(scene1);
+                    }
+
+                    if (!modSentence.contains("St")) {
+                        createAlert(modSentence,"Alerta");
+                    } else {
+                        char[] retorno = modSentence.toCharArray();
+                        getStatus();
+                    }
+
+
+                } catch (IOException e) {
+                    createAlert(e.toString(),"Alerta");
+                }
+            }
+        });
+
+        cena2.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                String modSentence = "";
+                try {
+                    //Pedestre
+                    if (switchKey.isChecked()) {
+                        modSentence = client(confScene2);
+                        switchKey.setChecked(false);
+                    } else {
+                        modSentence = client(scene2);
+                    }
+
+                    if (!modSentence.contains("St")) {
+                        createAlert(modSentence,"Alerta");
+                    } else {
+                        char[] retorno = modSentence.toCharArray();
+                        getStatus();
+                    }
+
+
+                } catch (IOException e) {
+                    createAlert(e.toString(),"Alerta");
+                }
+            }
+        });
+
+        cena3.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                String modSentence = "";
+                try {
+                    //Pedestre
+                    if (switchKey.isChecked()) {
+                        modSentence = client(confScene3);
+                        switchKey.setChecked(false);
+                    } else {
+                        modSentence = client(scene3);
+                    }
+
+                    if (!modSentence.contains("St")) {
+                        createAlert(modSentence,"Alerta");
+                    } else {
+                        char[] retorno = modSentence.toCharArray();
+                        getStatus();
+                    }
+
+
+                } catch (IOException e) {
+                    createAlert(e.toString(),"Alerta");
+                }
+            }
+        });
+
+
+        cena4.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                String modSentence = "";
+                try {
+                    //Pedestre
+                    if (switchKey.isChecked()) {
+                        modSentence = client(confScene4);
+                        switchKey.setChecked(false);
+                    } else {
+                        modSentence = client(scene4);
+                    }
+
+                    if (!modSentence.contains("St")) {
+                        createAlert(modSentence,"Alerta");
+                    } else {
+                        char[] retorno = modSentence.toCharArray();
+                        getStatus();
+                    }
+
+
+                } catch (IOException e) {
+                    createAlert(e.toString(),"Alerta");
+                }
+            }
+        });
+
+        cena5.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                String modSentence = "";
+                try {
+                    //Pedestre
+                    if (switchKey.isChecked()) {
+                        modSentence = client(confScene5);
+                        switchKey.setChecked(false);
+                    } else {
+                        modSentence = client(scene5);
+                    }
+
+                    if (!modSentence.contains("St")) {
+                        createAlert(modSentence,"Alerta");
+                    } else {
+                        char[] retorno = modSentence.toCharArray();
+                        getStatus();
+                    }
+
+
+                } catch (IOException e) {
+                    createAlert(e.toString(),"Alerta");
+                }
+            }
+        });
+
+        cena6.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                String modSentence = "";
+                try {
+                    //Pedestre
+                    if (switchKey.isChecked()) {
+                        modSentence = client(confScene6);
+                        switchKey.setChecked(false);
+                    } else {
+                        modSentence = client(scene6);
+                    }
+
+                    if (!modSentence.contains("St")) {
+                        createAlert(modSentence,"Alerta");
+                    } else {
+                        char[] retorno = modSentence.toCharArray();
+                        getStatus();
+                    }
+
+
+                } catch (IOException e) {
+                    createAlert(e.toString(),"Alerta");
+                }
+            }
+        });
+
+        cena7.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                String modSentence = "";
+                try {
+                    //Pedestre
+                    if (switchKey.isChecked()) {
+                        modSentence = client(confScene7);
+                        switchKey.setChecked(false);
+                    } else {
+                        modSentence = client(scene7);
+                    }
+
+                    if (!modSentence.contains("St")) {
+                        createAlert(modSentence,"Alerta");
+                    } else {
+                        char[] retorno = modSentence.toCharArray();
+                        getStatus();
+                    }
+
+
+                } catch (IOException e) {
+                    createAlert(e.toString(),"Alerta");
+                }
+            }
+        });
+
+        cena8.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                String modSentence = "";
+                try {
+                    //Pedestre
+                    if (switchKey.isChecked()) {
+                        modSentence = client(confScene8);
+                        switchKey.setChecked(false);
+                    } else {
+                        modSentence = client(scene8);
+                    }
+
+                    if (!modSentence.contains("St")) {
+                        createAlert(modSentence,"Alerta");
+                    } else {
+                        char[] retorno = modSentence.toCharArray();
+                        getStatus();
+                    }
+
+
+                } catch (IOException e) {
+                    createAlert(e.toString(),"Alerta");
+                }
+            }
+        });
+
+        cena9.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                String modSentence = "";
+                try {
+                    //Pedestre
+                    if (switchKey.isChecked()) {
+                        modSentence = client(confScene9);
+                        switchKey.setChecked(false);
+                    } else {
+                        modSentence = client(scene9);
+                    }
+
+                    if (!modSentence.contains("St")) {
+                        createAlert(modSentence,"Alerta");
+                    } else {
+                        char[] retorno = modSentence.toCharArray();
+                        getStatus();
+                    }
+
+
+                } catch (IOException e) {
+                    createAlert(e.toString(),"Alerta");
+                }
+            }
+        });
+
+
+
 
 //Lista de botoes referentes aos setores.
         //Botao 1
-        arrayOfSector.add(setor1);
+       // arrayOfSector.add(setor1); // pedestre
         //botao 2
-        arrayOfSector.add(setor2);
+       // arrayOfSector.add(setor2); // garagem
         //botao 3
-        arrayOfSector.add(setor3);
+        arrayOfSector.add(setor3); // bomba
         //botao 4
-        arrayOfSector.add(setor4);
+        arrayOfSector.add(setor4); // setor 4
         //botao 5
-        arrayOfSector.add(setor5);
+        arrayOfSector.add(setor5); // setor 5
         //botao 6
-        arrayOfSector.add(setor6);
+        arrayOfSector.add(setor6); // setor 6
         //botao 7
-        arrayOfSector.add(setor7);
+        arrayOfSector.add(setor7); // setor 7
+        //botao 8
+        arrayOfSector.add(setor8); // setor 7
 
         setor1.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 String modSentence = "";
                 try {
-                    //client("CP02S1");
+                    //Pedestre
                     modSentence = client(setor1txt);
                     if (!modSentence.contains("St")) {
                         createAlert(modSentence,"Alerta");
                     } else {
                         char[] retorno = modSentence.toCharArray();
-                        setBgButton(setor1, retorno[2]);
+                        if (setor1.isPressed()) {
+                            setBgButtonPedestrian(setor1, retorno[2]);
+                        }
                     }
 
 
@@ -248,7 +487,7 @@ AP02C9 -> CONFIGURA CENA 9
                         createAlert(modSentence,"Alerta");
                     } else {
                         char[] retorno = modSentence.toCharArray();
-                        setBgButton(setor2, retorno[3]);
+                        setBgButtonGarage(setor2, retorno[3]);
                     }
                 } catch (IOException e) {
                     Log.e("Error", e.toString());
@@ -268,7 +507,7 @@ AP02C9 -> CONFIGURA CENA 9
                         createAlert(modSentence,"Alerta");
                     } else {
                         char[] retorno = modSentence.toCharArray();
-                        setBgButton(setor3, retorno[4]);
+                        setBgButtonPump(setor3, retorno[4]);
                     }
                 } catch (IOException e) {
                     Log.e("Error", e.toString());
@@ -289,6 +528,7 @@ AP02C9 -> CONFIGURA CENA 9
                     } else {
                         char[] retorno = modSentence.toCharArray();
                         setBgButton(setor4, retorno[5]);
+                        setTitleOnMainButton(setorAll, retorno);
                     }
                 } catch (IOException e) {
                     Log.e("Error", e.toString());
@@ -309,6 +549,7 @@ AP02C9 -> CONFIGURA CENA 9
                     } else {
                         char[] retorno = modSentence.toCharArray();
                         setBgButton(setor5, retorno[6]);
+                        setTitleOnMainButton(setorAll, retorno);
                     }
                 } catch (IOException e) {
                     Log.e("Error", e.toString());
@@ -329,6 +570,7 @@ AP02C9 -> CONFIGURA CENA 9
                     } else {
                         char[] retorno = modSentence.toCharArray();
                         setBgButton(setor6, retorno[7]);
+                        setTitleOnMainButton(setorAll, retorno);
                     }
                 } catch (IOException e) {
                     Log.e("Error", e.toString());
@@ -349,6 +591,7 @@ AP02C9 -> CONFIGURA CENA 9
                     } else {
                         char[] retorno = modSentence.toCharArray();
                         setBgButton(setor7, retorno[8]);
+                        setTitleOnMainButton(setorAll, retorno);
                     }
                 } catch (IOException e) {
                     Log.e("Error", e.toString());
@@ -356,9 +599,6 @@ AP02C9 -> CONFIGURA CENA 9
                 }
             }
         });
-
-        //botao 8
-        final Button setor8 = (Button) findViewById(R.id.setor8);
 
         setor8.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -371,6 +611,7 @@ AP02C9 -> CONFIGURA CENA 9
                     } else {
                         char[] retorno = modSentence.toCharArray();
                         setBgButton(setor8, retorno[9]);
+                        setTitleOnMainButton(setorAll, retorno);
                     }
                 } catch (IOException e) {
                     Log.e("Error", e.toString());
@@ -379,7 +620,7 @@ AP02C9 -> CONFIGURA CENA 9
             }
         });
 
-        final Button setorAll = (Button) findViewById(R.id.all);
+
         setorAll.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 String modSentence = "";
@@ -390,9 +631,14 @@ AP02C9 -> CONFIGURA CENA 9
                         createAlert(modSentence,"Alerta");
                     } else {
                         char[] retorno = modSentence.toCharArray();
-                        for (int i = 2; i < 10; i++ ) {
-                            setBgButton(arrayOfSector.get(i - 2), retorno[i]);
+
+                        for (int i = 1, r = 5; i < arrayOfSector.size(); i++, r++ ) {
+                            setBgButton(arrayOfSector.get(i), retorno[r]);
                         }
+
+                        setTitleOnMainButton(setorAll, retorno);
+
+
 
                     }
                 } catch (IOException e) {
@@ -419,11 +665,36 @@ AP02C9 -> CONFIGURA CENA 9
         timer.cancel();
     }
 
+    public void getStatus() {
+        String modSentence = "";
+        try {
+            //client("CP02S1");
+            modSentence = client("SP04S0");
+            if (!modSentence.contains("St")) {
+                createAlert(modSentence,"Alerta");
+            } else {
+                char[] retorno = modSentence.toCharArray();
+
+                for (int i = 1, r = 5; i < arrayOfSector.size(); i++, r++ ) {
+
+                    setBgButton(arrayOfSector.get(i), retorno[r]);
+                }
+
+                setBgButtonPump(arrayOfSector.get(0), retorno[4]);
+                setTitleOnMainButton(all, retorno);
+            }
+        } catch (IOException e) {
+            Log.e("Error", e.toString());
+            e.printStackTrace();
+        }
+    }
+
     public void checking(){
         this.runOnUiThread(new Runnable() {
             @Override
             public void run() {
                 //createAlert("aasas", "asasas");
+                getStatus();
             }
         });
     }
@@ -442,6 +713,14 @@ AP02C9 -> CONFIGURA CENA 9
 
     }
 
+    public void setTitleOnMainButton(Button button, char[] character) {
+        if (character[5] == '1' || character[6] == '1' || character[7] == '1' || character[8] == '1' || character[9] == '1') {
+            button.setText("Desligar Todos");
+        } else {
+            button.setText("Ligar Todos");
+        }
+    }
+
     public void setBgButton(Button botao, Character isOn) {
 
         if (isOn.toString().equals("1")) {
@@ -449,6 +728,17 @@ AP02C9 -> CONFIGURA CENA 9
         } else {
             botao.setBackgroundResource(R.drawable.light_off);
         }
+
+    }
+    public void setBgButtonPedestrian(Button botao, Character isOn) {
+
+        botao.setBackgroundResource(R.drawable.door_closed);
+
+    }
+
+    public void setBgButtonGarage(Button botao, Character isOn) {
+
+        botao.setBackgroundResource(R.drawable.garage_closed);
 
     }
 
@@ -494,30 +784,7 @@ AP02C9 -> CONFIGURA CENA 9
 
     @Override
     public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-        Toast.makeText(this, "Modo " + (isChecked ? "Aciona ativado." : "Configura ativado."),
+        Toast.makeText(this, "Modo " + (isChecked ? "Configura ativado." : "Aciona ativado."),
                 Toast.LENGTH_SHORT).show();
-        if(isChecked) {
-            scene1 = "AP02C1";
-            scene2 = "AP02C2";
-            scene3 = "AP02C3";
-            scene4 = "AP02C4";
-            scene5 = "AP02C5";
-            scene6 = "AP02C6";
-            scene7 = "AP02C7";
-            scene8 = "AP02C8";
-            scene9 = "AP02C9";
-            createAlert("asasas", "asasasas");
-        } else {
-            scene1 = "CP02C2";
-            scene2 = "CP02C2";
-            scene3 = "CP02C3";
-            scene4 = "CP02C4";
-            scene5 = "CP02C5";
-            scene6 = "CP02C6";
-            scene7 = "CP02C7";
-            scene8 = "CP02C8";
-            scene9 = "CP02C9";
-            createAlert("ghghgh", "hjghjgjhj");
-        }
     }
 }

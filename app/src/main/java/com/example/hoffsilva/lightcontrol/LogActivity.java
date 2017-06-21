@@ -60,7 +60,7 @@ public class LogActivity extends AppCompatActivity {
 
 
         DatagramSocket client_socket = new DatagramSocket(10000);
-        InetAddress IPAddress =  InetAddress.getByName("192.168.25.110");
+        InetAddress IPAddress =  InetAddress.getByName("192.168.0.200");
 
         //while (true)
         // {
