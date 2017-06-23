@@ -18,6 +18,7 @@ import java.io.IOException;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.InetAddress;
+import java.net.SocketTimeoutException;
 import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -73,6 +74,11 @@ public class BedRoomActivity extends AppCompatActivity implements CompoundButton
     String setorAlltxt = "CP02S0";
 
     Button all;
+    SeekBar seekBarSt1;
+    SeekBar seekBarSt2;
+    Button st1;
+    Button st2;
+
 
     public Boolean getSetor1() {
         return setor1isOn;
@@ -152,9 +158,9 @@ public class BedRoomActivity extends AppCompatActivity implements CompoundButton
         final Button setor6 = (Button) findViewById(R.id.setor6);
 
         //botao 7
-        final Button setor7 = (Button) findViewById(R.id.setor7);
+        final Button setorAll = (Button) findViewById(R.id.setorAll);
 
-
+        all = setorAll;
 
 //Lista de botoes das cenas.
         //Cena 1
@@ -180,6 +186,241 @@ public class BedRoomActivity extends AppCompatActivity implements CompoundButton
             switchKey.setOnCheckedChangeListener(this);
         }
 
+        cena1.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                String modSentence = "";
+                try {
+                    //Pedestre
+                    if (switchKey.isChecked()) {
+                        modSentence = client(confScene1);
+                        switchKey.setChecked(false);
+                    } else {
+                        modSentence = client(scene1);
+                    }
+
+                    if (!modSentence.contains("St")) {
+                        createAlert(modSentence,"Alerta");
+                    } else {
+                        char[] retorno = modSentence.toCharArray();
+                        getStatus();
+                    }
+
+
+                } catch (IOException e) {
+                    createAlert(e.toString(),"Alerta");
+                }
+            }
+        });
+
+        cena2.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                String modSentence = "";
+                try {
+                    //Pedestre
+                    if (switchKey.isChecked()) {
+                        modSentence = client(confScene2);
+                        switchKey.setChecked(false);
+                    } else {
+                        modSentence = client(scene2);
+                    }
+
+                    if (!modSentence.contains("St")) {
+                        createAlert(modSentence,"Alerta");
+                    } else {
+                        char[] retorno = modSentence.toCharArray();
+                        getStatus();
+                    }
+
+
+                } catch (IOException e) {
+                    createAlert(e.toString(),"Alerta");
+                }
+            }
+        });
+
+        cena3.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                String modSentence = "";
+                try {
+                    //Pedestre
+                    if (switchKey.isChecked()) {
+                        modSentence = client(confScene3);
+                        switchKey.setChecked(false);
+                    } else {
+                        modSentence = client(scene3);
+                    }
+
+                    if (!modSentence.contains("St")) {
+                        createAlert(modSentence,"Alerta");
+                    } else {
+                        char[] retorno = modSentence.toCharArray();
+                        getStatus();
+                    }
+
+
+                } catch (IOException e) {
+                    createAlert(e.toString(),"Alerta");
+                }
+            }
+        });
+
+
+        cena4.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                String modSentence = "";
+                try {
+                    //Pedestre
+                    if (switchKey.isChecked()) {
+                        modSentence = client(confScene4);
+                        switchKey.setChecked(false);
+                    } else {
+                        modSentence = client(scene4);
+                    }
+
+                    if (!modSentence.contains("St")) {
+                        createAlert(modSentence,"Alerta");
+                    } else {
+                        char[] retorno = modSentence.toCharArray();
+                        getStatus();
+                    }
+
+
+                } catch (IOException e) {
+                    createAlert(e.toString(),"Alerta");
+                }
+            }
+        });
+
+        cena5.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                String modSentence = "";
+                try {
+                    //Pedestre
+                    if (switchKey.isChecked()) {
+                        modSentence = client(confScene5);
+                        switchKey.setChecked(false);
+                    } else {
+                        modSentence = client(scene5);
+                    }
+
+                    if (!modSentence.contains("St")) {
+                        createAlert(modSentence,"Alerta");
+                    } else {
+                        char[] retorno = modSentence.toCharArray();
+                        getStatus();
+                    }
+
+
+                } catch (IOException e) {
+                    createAlert(e.toString(),"Alerta");
+                }
+            }
+        });
+
+        cena6.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                String modSentence = "";
+                try {
+                    //Pedestre
+                    if (switchKey.isChecked()) {
+                        modSentence = client(confScene6);
+                        switchKey.setChecked(false);
+                    } else {
+                        modSentence = client(scene6);
+                    }
+
+                    if (!modSentence.contains("St")) {
+                        createAlert(modSentence,"Alerta");
+                    } else {
+                        char[] retorno = modSentence.toCharArray();
+                        getStatus();
+                    }
+
+
+                } catch (IOException e) {
+                    createAlert(e.toString(),"Alerta");
+                }
+            }
+        });
+
+        cena7.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                String modSentence = "";
+                try {
+                    //Pedestre
+                    if (switchKey.isChecked()) {
+                        modSentence = client(confScene7);
+                        switchKey.setChecked(false);
+                    } else {
+                        modSentence = client(scene7);
+                    }
+
+                    if (!modSentence.contains("St")) {
+                        createAlert(modSentence,"Alerta");
+                    } else {
+                        char[] retorno = modSentence.toCharArray();
+                        getStatus();
+                    }
+
+
+                } catch (IOException e) {
+                    createAlert(e.toString(),"Alerta");
+                }
+            }
+        });
+
+        cena8.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                String modSentence = "";
+                try {
+                    //Pedestre
+                    if (switchKey.isChecked()) {
+                        modSentence = client(confScene8);
+                        switchKey.setChecked(false);
+                    } else {
+                        modSentence = client(scene8);
+                    }
+
+                    if (!modSentence.contains("St")) {
+                        createAlert(modSentence,"Alerta");
+                    } else {
+                        char[] retorno = modSentence.toCharArray();
+                        getStatus();
+                    }
+
+
+                } catch (IOException e) {
+                    createAlert(e.toString(),"Alerta");
+                }
+            }
+        });
+
+        cena9.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                String modSentence = "";
+                try {
+                    //Pedestre
+                    if (switchKey.isChecked()) {
+                        modSentence = client(confScene9);
+                        switchKey.setChecked(false);
+                    } else {
+                        modSentence = client(scene9);
+                    }
+
+                    if (!modSentence.contains("St")) {
+                        createAlert(modSentence,"Alerta");
+                    } else {
+                        char[] retorno = modSentence.toCharArray();
+                        getStatus();
+                    }
+
+
+                } catch (IOException e) {
+                    createAlert(e.toString(),"Alerta");
+                }
+            }
+        });
+
 
 //Lista de botoes referentes aos setores.
         //Botao 1
@@ -194,17 +435,16 @@ public class BedRoomActivity extends AppCompatActivity implements CompoundButton
         arrayOfSector.add(setor5);
         //botao 6
         arrayOfSector.add(setor6);
-        //botao 7
-        arrayOfSector.add(setor7);
 
         final TextView textView2 = (TextView) findViewById(R.id.textView2);
 
+        seekBarSt1 = seekSetor1;
         seekSetor1.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener(){
             int progresss = 0;
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 progresss = progress;
-
+                st1 = setor1;
                 setor1.setAlpha((float) progress/100);
                 textView2.setText(String.valueOf(progresss));
             }
@@ -240,12 +480,16 @@ public class BedRoomActivity extends AppCompatActivity implements CompoundButton
         });
 
         final TextView textView = (TextView) findViewById(R.id.textView);
-
+        seekBarSt2 = seekSetor2;
         seekSetor2.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener(){
             int progresss = 0;
+
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 progresss = progress;
+                st2 = setor2;
+                setor2.setAlpha((float) progress/100);
+                textView.setText(String.valueOf(progresss));
             }
 
             @Override
@@ -257,7 +501,7 @@ public class BedRoomActivity extends AppCompatActivity implements CompoundButton
             public void onStopTrackingTouch(SeekBar seekBar) {
                 String modSentence = "";
                 int value = (progresss*255)/100;
-                textView.setText(String.valueOf(value));
+
                 try {
                     //client("CP02S1");
                     char dimmerValue = (char) value;
@@ -281,13 +525,15 @@ public class BedRoomActivity extends AppCompatActivity implements CompoundButton
             public void onClick(View v) {
                 String modSentence = "";
                 try {
-                    //client("CP02S1");
+                    //Pedestre
                     modSentence = client(setor1txt);
                     if (!modSentence.contains("St")) {
                         createAlert(modSentence,"Alerta");
                     } else {
                         char[] retorno = modSentence.toCharArray();
-                        setBgButton(setor1, retorno[2]);
+                        if (setor1.isPressed()) {
+                           getStatus();
+                        }
                     }
 
 
@@ -296,7 +542,6 @@ public class BedRoomActivity extends AppCompatActivity implements CompoundButton
                 }
             }
         });
-
 
         setor2.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -308,7 +553,7 @@ public class BedRoomActivity extends AppCompatActivity implements CompoundButton
                         createAlert(modSentence,"Alerta");
                     } else {
                         char[] retorno = modSentence.toCharArray();
-                        setBgButton(setor2, retorno[3]);
+                        getStatus();
                     }
                 } catch (IOException e) {
                     Log.e("Error", e.toString());
@@ -328,7 +573,7 @@ public class BedRoomActivity extends AppCompatActivity implements CompoundButton
                         createAlert(modSentence,"Alerta");
                     } else {
                         char[] retorno = modSentence.toCharArray();
-                        setBgButton(setor3, retorno[4]);
+                        getStatus();
                     }
                 } catch (IOException e) {
                     Log.e("Error", e.toString());
@@ -349,6 +594,7 @@ public class BedRoomActivity extends AppCompatActivity implements CompoundButton
                     } else {
                         char[] retorno = modSentence.toCharArray();
                         setBgButton(setor4, retorno[5]);
+                        setTitleOnMainButton(setorAll, retorno);
                     }
                 } catch (IOException e) {
                     Log.e("Error", e.toString());
@@ -368,7 +614,7 @@ public class BedRoomActivity extends AppCompatActivity implements CompoundButton
                         createAlert(modSentence,"Alerta");
                     } else {
                         char[] retorno = modSentence.toCharArray();
-                        setBgButton(setor5, retorno[6]);
+                        getStatus();
                     }
                 } catch (IOException e) {
                     Log.e("Error", e.toString());
@@ -388,7 +634,7 @@ public class BedRoomActivity extends AppCompatActivity implements CompoundButton
                         createAlert(modSentence,"Alerta");
                     } else {
                         char[] retorno = modSentence.toCharArray();
-                        setBgButton(setor6, retorno[7]);
+                        getStatus();
                     }
                 } catch (IOException e) {
                     Log.e("Error", e.toString());
@@ -397,7 +643,7 @@ public class BedRoomActivity extends AppCompatActivity implements CompoundButton
             }
         });
 
-        final Button setorAll = (Button) findViewById(R.id.all);
+
         setorAll.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 String modSentence = "";
@@ -408,10 +654,8 @@ public class BedRoomActivity extends AppCompatActivity implements CompoundButton
                         createAlert(modSentence,"Alerta");
                     } else {
                         char[] retorno = modSentence.toCharArray();
-                        for (int i = 2; i < 10; i++ ) {
-                            setBgButton(arrayOfSector.get(i - 2), retorno[i]);
-                        }
 
+                        getStatus();
                     }
                 } catch (IOException e) {
                     Log.e("Error", e.toString());
@@ -419,6 +663,8 @@ public class BedRoomActivity extends AppCompatActivity implements CompoundButton
                 }
             }
         });
+
+
 
         timer.schedule(new TimerTask() {
             @Override
@@ -434,6 +680,42 @@ public class BedRoomActivity extends AppCompatActivity implements CompoundButton
 
 
 
+    public void getStatus() {
+        String modSentence = "";
+        try {
+            //client("CP02S1");
+            modSentence = client("SP02S0");
+            if (!modSentence.contains("St")) {
+                createAlert(modSentence,"Alerta");
+            } else {
+                char[] retorno = modSentence.toCharArray();
+
+                for (int i = 2, r = 4; i < arrayOfSector.size(); i++, r++ ) {
+
+                    setBgButton(arrayOfSector.get(i), retorno[r]);
+                }
+
+                Double valueOfSeekSt1 = (retorno[8]/2.55);
+                seekBarSt1.setProgress(valueOfSeekSt1.intValue());
+
+                Double valueOfSeekSt2 = (retorno[9]/2.55);
+                seekBarSt2.setProgress(valueOfSeekSt2.intValue());
+
+                setTitleOnMainButton(all, retorno);
+            }
+        } catch (IOException e) {
+            Log.e("Error", e.toString());
+            e.printStackTrace();
+        }
+    }
+
+    public void setTitleOnMainButton(Button button, char[] character) {
+        if (character[2] == '1' || character[3] == '1' || character[4] == '1' || character[5] == '1' || character[6] == '1' || character[7] == '1') {
+            button.setText("Desligar Todos");
+        } else {
+            button.setText("Ligar Todos");
+        }
+    }
 
 
 
@@ -448,7 +730,7 @@ public class BedRoomActivity extends AppCompatActivity implements CompoundButton
         this.runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                //createAlert("aasas", "asasas");
+                getStatus();
             }
         });
     }
@@ -477,22 +759,13 @@ public class BedRoomActivity extends AppCompatActivity implements CompoundButton
 
     }
 
-    public void setBgButtonPump(Button botao, Character isOn) {
-
-        if (isOn.toString().equals("1")) {
-            botao.setBackgroundResource(R.drawable.pump_on);
-        } else {
-            botao.setBackgroundResource(R.drawable.pump_off);
-        }
-
-    }
 
     public String client(String setor) throws IOException {
 
 
         DatagramSocket client_socket = new DatagramSocket(10000);
         InetAddress IPAddress =  InetAddress.getByName("192.168.0.200");
-
+        client_socket.setSoTimeout(200);
         //while (true)
         // {
         send_data = setor.getBytes();
@@ -500,11 +773,22 @@ public class BedRoomActivity extends AppCompatActivity implements CompoundButton
         //System.out.println("Type Something (q or Q to quit): ");
 
         DatagramPacket send_packet = new DatagramPacket(send_data,setor.length(), IPAddress, 10000);
+
         client_socket.send(send_packet);
         //chandra
         DatagramPacket receivePacket = new DatagramPacket(receiveData, receiveData.length);
-        client_socket.receive(receivePacket);
-        modifiedSentence = new String(receivePacket.getData());
+
+        try {
+            client_socket.receive(receivePacket);
+            modifiedSentence = new String(receivePacket.getData());
+        } catch (SocketTimeoutException ste) {
+            Toast.makeText(this, ste.getMessage(),
+                    Toast.LENGTH_SHORT).show();
+            client_socket.send(send_packet);
+        }
+
+
+
 
 
 
@@ -519,31 +803,8 @@ public class BedRoomActivity extends AppCompatActivity implements CompoundButton
 
     @Override
     public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-        Toast.makeText(this, "Modo " + (isChecked ? "Aciona ativado." : "Configura ativado."),
+        Toast.makeText(this, "Modo " + (isChecked ? "Configura ativado." : "Aciona ativado."),
                 Toast.LENGTH_SHORT).show();
-        if(isChecked) {
-            scene1 = "AP02C1";
-            scene2 = "AP02C2";
-            scene3 = "AP02C3";
-            scene4 = "AP02C4";
-            scene5 = "AP02C5";
-            scene6 = "AP02C6";
-            scene7 = "AP02C7";
-            scene8 = "AP02C8";
-            scene9 = "AP02C9";
-            createAlert("asasas", "asasasas");
-        } else {
-            scene1 = "CP02C2";
-            scene2 = "CP02C2";
-            scene3 = "CP02C3";
-            scene4 = "CP02C4";
-            scene5 = "CP02C5";
-            scene6 = "CP02C6";
-            scene7 = "CP02C7";
-            scene8 = "CP02C8";
-            scene9 = "CP02C9";
-            createAlert("ghghgh", "hjghjgjhj");
-        }
     }
 
 

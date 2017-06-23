@@ -22,6 +22,7 @@ import java.io.IOException;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.InetAddress;
+import java.net.SocketTimeoutException;
 import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -690,7 +691,7 @@ public class GardenActivity extends AppCompatActivity implements CompoundButton.
         this.runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                //createAlert("aasas", "asasas");
+
                 getStatus();
             }
         });
@@ -765,8 +766,15 @@ public class GardenActivity extends AppCompatActivity implements CompoundButton.
         client_socket.send(send_packet);
         //chandra
         DatagramPacket receivePacket = new DatagramPacket(receiveData, receiveData.length);
-        client_socket.receive(receivePacket);
-        modifiedSentence = new String(receivePacket.getData());
+
+        try {
+            client_socket.receive(receivePacket);
+            modifiedSentence = new String(receivePacket.getData());
+        } catch (SocketTimeoutException ste) {
+            Toast.makeText(this, ste.getMessage(),
+                    Toast.LENGTH_SHORT).show();
+            client_socket.send(send_packet);
+        }
 
 
 
