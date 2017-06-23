@@ -101,6 +101,7 @@
                             />
 
                         <TextView
+                            android:id="@+id/tv_voltage"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="00.0V 00.0V 00.0V"
@@ -196,6 +197,7 @@
                             android:gravity="center"/>
 
                         <TextView
+                            android:id="@+id/tv_date"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="DD/MM/AA"
@@ -243,6 +245,7 @@
                             android:background="@drawable/temperature"/>
 
                         <TextView
+                            android:id="@+id/tv_temperature"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="00.0ºC 00.0ºC"
@@ -292,6 +295,7 @@
                             android:gravity="center" />
 
                         <TextView
+                            android:id="@+id/tv_cooler_speed"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"

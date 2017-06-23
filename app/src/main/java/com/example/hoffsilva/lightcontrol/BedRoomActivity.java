@@ -765,7 +765,7 @@ public class BedRoomActivity extends AppCompatActivity implements CompoundButton
 
         DatagramSocket client_socket = new DatagramSocket(10000);
         InetAddress IPAddress =  InetAddress.getByName("192.168.0.200");
-        client_socket.setSoTimeout(200);
+        client_socket.setSoTimeout(1000);
         //while (true)
         // {
         send_data = setor.getBytes();
