@@ -77,7 +77,9 @@ SC00LF - > SOLICITA LOG DE FALHAS -> FORMATO RESPOSTA = (COD:ADD:STATUS-HH:MM-DD
         bt_hour.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Calendar c = Calendar.getInstance();
-                String hour = ""+c.get(Calendar.HOUR);
+
+                String hour = ""+c.get(Calendar.HOUR_OF_DAY);
+
                 if (hour.length() != 2) {
                     hour = "0" + hour;
                 }
