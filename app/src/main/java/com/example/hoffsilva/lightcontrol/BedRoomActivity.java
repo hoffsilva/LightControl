@@ -438,6 +438,9 @@ public class BedRoomActivity extends AppCompatActivity implements CompoundButton
 
         final TextView textView2 = (TextView) findViewById(R.id.textView2);
 
+
+        seekSetor1.setMax(255);
+
         seekBarSt1 = seekSetor1;
         seekSetor1.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener(){
             int progresss = 0;
@@ -458,11 +461,11 @@ public class BedRoomActivity extends AppCompatActivity implements CompoundButton
             public void onStopTrackingTouch(SeekBar seekBar) {
                 String modSentence = "";
 
-                int value = (progresss*255)/100;
+                int value = progresss;
 
                 try {
                     //client("CP02S1");
-                    char dimmerValue = (char) value;
+                    char dimmerValue = (char) progresss;
 
                     modSentence = client("CP02D1"+dimmerValue);
                     if (!modSentence.contains("St")) {
